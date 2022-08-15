@@ -2724,7 +2724,7 @@ iframe { width: 100%; }
 -----------------------------------------------------------------*/
 .block-shadow { box-shadow: 0 25px 75px 0 rgba(0, 0, 0, 0.2); margin-left: -100px; }
 
-.portfolio-item .new-badge { background-image: url("../preview/images/new-badge.png"); background-position: 0 0; background-repeat: no-repeat; height: 61px; position: absolute; right: 12px; top: 3px; width: 55px; z-index: 100; }
+.portfolio-item .new-badge { background-image: url(""); background-position: 0 0; background-repeat: no-repeat; height: 61px; position: absolute; right: 12px; top: 3px; width: 55px; z-index: 100; }
 
 /* ----------------------------------------------------------------
     Bar Rating
