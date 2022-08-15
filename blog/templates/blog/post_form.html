@@ -1,0 +1,27 @@
+{% extends "users/include/user_dashboard_layout.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-body">
+            <h3 class="box-title m-b-0">{{ header1 }}</h3>
+            <p class="text-muted m-b-30 font-13">{{ header2 }}</p>
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <form enctype="multipart/form-data" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Title</label>
+                            {{ form.title }}
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Title</label>
+                            {{ form.content }}
+                        </div>
+                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

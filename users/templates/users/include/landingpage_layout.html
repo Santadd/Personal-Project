@@ -1,0 +1,192 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'users/landing/assets/images/favicon.png' %}">
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>Santa Blog -- Landing Page</title>
+    {% endif %}
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'users/landing/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- owl slider CSS -->
+    <link href="{% static 'users/landing/assets/owl.carousel/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'users/landing/assets/owl.carousel/owl.theme.default.css' %}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{% static 'users/landing/css/style.css' %}" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body class="fix-header">
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topheader" id="top">
+            <div class="fix-width">
+                <nav class="navbar navbar-expand-md navbar-light p-l-0">
+
+                    <!-- Logo will be here -->
+                    <a class="navbar-brand" href="{% url 'main-homepage' %}"><img
+                            src="{% static 'users/landing/images/admin-logo.png' %}" alt="admin template" /></a>
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                        data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                        aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+                    <!-- This is the navigation menu -->
+                    {% if user.is_authenticated %}
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav ml-auto stylish-nav">
+                            <li class="nav-item dropdown"> 
+                                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" 
+                                    data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">Account
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"> 
+                                    <a class="dropdown-item" href="#">
+                                        Change Password
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        Change Email
+                                    </a>
+                                    <a class="dropdown-item" href="{% url 'users-logout' %}">
+                                        Logout
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="nav-item"> 
+                                <a class="nav-link" href="{% url 'main-homepage' %}">
+                                    Home
+                                </a> 
+                            </li>
+                            <li class="nav-item"> 
+                                <a class="m-t-5 btn btn-info font-13" href="{% url 'users-dashboard' %}" style="width:120px;">
+                                    Dashboard
+                                </a> 
+                            </li>
+                        </ul>
+                    </div>
+                    {% else %}
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav ml-auto stylish-nav">
+                            <li class="nav-item"> 
+                                <a class="nav-link" href="#">
+                                    Home
+                                </a> 
+                            </li>
+                            <li class="nav-item"> 
+                                <a class="m-t-5 btn btn-info font-13" 
+                                    href="{% url 'users-login' %}" style="width:120px;">
+                                    LOG IN
+                                </a> 
+                            </li>
+                        </ul>
+                    </div>
+                    {% endif %}
+                </nav>
+            </div>
+        </header>
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <div class="fix-width">
+                    <div class="row banner-text justify-content-center">
+                        {% block content %}
+                        {% endblock content %}
+                        <div class="col-md-12 text-center">
+                            <div class="hero-banner"> <img src="{% static 'users/landing/images/banner.jpg' %}" alt="Admin Press template"
+                                    class="img-fluid" /> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- End Page Content -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- footer -->
+                <!-- ============================================================== -->
+                <a class="bt-top btn btn-circle btn-lg btn-info" href="#top"><i class="ti-arrow-up"></i></a>
+                <footer class="footer row">
+                    <div class="fix-width">
+                        <div class="row">
+                            <div class="clearfix"></div>
+                            <div class="col-md-12 sub-footer">
+                                <span>Copyright 2017. All Rights Reserved by 
+                                    <a class="text-white" href="#"
+                                        target="_blank">Admin Press
+                                    </a>
+                                </span>
+                                <span class="pull-right">Design & Developed by 
+                                    <a class="text-white" href="http://themedesigner.in" 
+                                    target="_blank">Themedesinger.in</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- ============================================================== -->
+                <!-- End footer -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="{% static 'users/landing/js/jquery.min.js' %}"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="{% static 'users/landing/bootstrap/js/popper.min.js' %}"></script>
+    <script src="{% static 'users/landing/bootstrap/js/bootstrap.min.js' %}"></script>
+    <!--Wave Effects -->
+    <script src="{% static 'users/landing/js/waves.js' %}"></script>
+    <!--stickey kit -->
+    <script src="{% static 'users/landing/js/sticky-kit.min.js' %}"></script>
+    <!-- jQuery for carousel -->
+    <script src="{% static 'users/landing/assets/owl.carousel/owl.carousel.min.js' %}"></script>
+    <!--Custom JavaScript -->
+    <script src="{% static 'users/landing/js/custom.min.js' %}"></script>
+</body>
+
+</html>

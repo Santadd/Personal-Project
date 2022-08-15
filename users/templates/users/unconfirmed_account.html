@@ -1,0 +1,33 @@
+{% extends "users/include/landingpage_layout.html" %}
+{% load static %}
+{% block content %}
+<div class="col-md-8 m-t-20 text-center">
+    {% include "users/include/landingpage_messages.html" %}
+    <h1 style="color: #154a6c;"> Hello {{ user.username }}! <br>
+        Welcome to
+        <span style="color: #8fad55;">
+            Santa Blog
+        </span>
+    </h1>
+    <p class="subtext">
+        <span class="font-medium">
+            You have not confirmed your account yet. 
+        </span>
+        <span class="font-medium">
+            To access the Management Dashboard you need to confirm your account. 
+        </span>
+        <span class="font-medium">
+            Check your inbox, you should have received an email with a confirmation link.
+        </span>
+    </p>
+    
+    <p class="subtext">
+        <span class="font-medium">
+            Need another confirmation link?
+            <a href="{% url 'users-resend-confirmation' %}">Click here</a>
+        </span>
+    </p>
+</div>
+
+
+{% endblock content %}

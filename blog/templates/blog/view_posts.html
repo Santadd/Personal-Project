@@ -1,0 +1,79 @@
+{% extends "users/include/user_dashboard_layout.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Blog Posts</h4>
+                <h6 class="card-subtitle">List of all Posts</h6>
+                <div class="table-responsive m-t-40">
+                    <table id="myTable" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Post Title</th>
+                                <th>Content</th>
+                                <th>Date Posted</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for post in posts %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ post.title }}</td>
+                                {% if post.content|length > 100 %}
+                                    <td>{{ post.content|slice:"100" }}...</td>
+                                {% else %}
+                                    <td>{{ post.content }}</td>
+                                {% endif %}
+                                <td>{{ post.date_posted }}</td>
+                                <td>
+                                    <a href="{% url 'blog-update' post.pk %}" data-toggle="tooltip" data-original-title="Edit"> 
+                                        <i class="fa fa-pencil text-inverse m-r-10"></i> 
+                                    </a>
+                                                    
+                                    <a href="#" data-toggle="modal" data-target="#myModal"
+                                        data-original-title="Close"> 
+                                        <i class="fa fa-close text-danger"></i> 
+                                    </a>
+                                </td>
+                            </tr>
+                            <!-- Modal -->
+                            <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="myModalLabel">
+                                                <strong>Delete {{ post.title }}</strong>
+                                            </h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>
+                                                Are you sure you want to delete blog post with title:
+                                                <br><strong>{{ post.title }}?</strong>
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-info waves-effect" data-dismiss="modal">Close</button>
+                                            <form action="{% url 'blog-delete' post.pk %}" method="POST">
+                                                {% csrf_token %}
+                                                <button class="btn btn-danger waves-effect">Delete</button>
+                                            </form>
+                                            
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

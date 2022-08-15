@@ -1,0 +1,17 @@
+Dear {{ username }},
+
+Welcome to Santa Blog!
+
+To confirm your account please click here:
+
+{{ domain }}{% url 'users-confirm-account' uidb64=uid token=token %}
+
+Alternatively, you can paste the following link in your browser's address bar:
+
+{{ domain }}{% url 'users-confirm-account' uidb64=uid token=token %}
+
+Sincerely,
+
+The Santa-Dev Team
+
+Note: replies to this email address are not monitored

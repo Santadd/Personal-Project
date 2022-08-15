@@ -1,0 +1,34 @@
+{% extends "users/include/landingpage_layout.html" %}
+{% load static %}
+{% block content %}
+{% if user.is_authenticated %}
+<div class="col-md-8 m-t-20 text-center">
+    {% include "users/include/landingpage_messages.html" %}
+    <h1 style="color: #154a6c;">Welcome {{ user.username }} <br> to <br>
+        <span style="color: #8fad55;">
+            Santa Blog
+        </span>
+    </h1>
+    <p class="subtext">
+        <span class="font-medium">
+            Please click on Dashboard to manage your account
+        </span>
+    </p>
+</div>
+{% elif user.is_anonymous %}
+<div class="col-md-8 m-t-20 text-center">
+    {% include "users/include/landingpage_messages.html" %}
+    <h1 style="color: #154a6c;">Welcome to
+        <span style="color: #8fad55;">
+            Santa Blog
+
+        </span>
+    </h1>
+    <p class="subtext">
+        <span class="font-medium">
+            Please login to access the Management Dashboard
+        </span>
+    </p>
+</div>
+{% endif %}
+{% endblock content %}
